@@ -19,4 +19,15 @@ router.post("/save_usuario", async (req, res) => {
   }
 });
 
+router.post("/save_aluno", async (req, res) => {
+  try {
+    const aluno = req.body;
+    const result = await db.insertAluno(aluno);
+    console.log('Aluno salvo:', result);
+    res.json(result);
+  } catch (error) {
+    console.error('Erro ao salvar aluno:', error);
+    res.status(500).json({ error: 'Erro ao salvar aluno' });
+  }
+});
 module.exports = router;

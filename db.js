@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 
 let singletonMongo;
 
@@ -20,6 +20,8 @@ async function findAluno(){
 
 async function insertAluno(aluno){
     const db = await connectMongo();
+    aluno.planoId = new ObjectId(aluno.planoId);
+    aluno.usuarioId = new ObjectId(aluno.usuarioId);
     return db.collection("aluno").insertOne(aluno);
 }
 
@@ -38,16 +40,32 @@ async function findPlano(){
     return db.collection("plano").find().toArray();
 }
 
+async function insertPlano(plano){
+    const db = await connectMongo();
+    return db.collection("plano").insertOne(plano);
+}
+
 async function findAssinatura(){
     const db = await connectMongo();
     return db.collection("assinatura").find().toArray();
 }
 
+async function insertAssinatura(assinatura){
+    const db = await connectMongo();
+    return db.collection("assinatura").insertOne(assinatura);
+}
+
 module.exports = {
-    insertAluno,
     insertUsuario,
+    insertAluno,
+    insertPlano,
+    //insertAssinatura,
     findUsuario,
-    findAluno,
     findPlano,
-    findAssinatura
+    findAluno,
+    findAssinatura,
+    //deleteUsuario,
+    //deleteAluno,
+    //deletePlano,
+    //deleteAssinatura
 }
