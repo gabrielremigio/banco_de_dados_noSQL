@@ -25,10 +25,10 @@ async function insertAluno(aluno){
     return db.collection("aluno").insertOne(aluno);
 }
 
-// async function deleteAluno(id){
-//     const db = await connectMongo();
-//     return db.collection("aluno").deleteOne({ _id: new ObjectId(id)});
-// } 
+async function deleteAluno(id){
+    const db = await connectMongo();
+    return db.collection("aluno").deleteOne({ _id: new ObjectId(id)});
+} 
 
 async function findUsuario(){
     const db = await connectMongo();
@@ -40,6 +40,16 @@ async function insertUsuario(usuario){
     return db.collection("usuario").insertOne(usuario);
 }
 
+async function deleteUsuario(id){
+    const db = await connectMongo();
+    return db.collection("usuario").deleteOne({ _id: new ObjectId(id)});
+} 
+
+async function updateUsuario(id, sobrenome){
+    const db = await connectMongo();
+    return db.collection("usuario").updateOne({_id: new ObjectId(id)},{$set: { sobrenome: sobrenome }});
+}
+
 async function findPlano(){
     const db = await connectMongo();
     return db.collection("plano").find().toArray();
@@ -48,6 +58,16 @@ async function findPlano(){
 async function insertPlano(plano){
     const db = await connectMongo();
     return db.collection("plano").insertOne(plano);
+}
+
+async function deletePlano(id){
+    const db = await connectMongo();
+    return db.collection("plano").deleteOne({ _id: new ObjectId(id)});
+} 
+
+async function updatePlano(id, valor){
+    const db = await connectMongo();
+    return db.collection("plano").updateOne({_id: new ObjectId(id)},{$set: { valor: valor }});
 }
 
 async function findAssinatura(){
@@ -62,6 +82,16 @@ async function insertAssinatura(assinatura){
     return db.collection("assinatura").insertOne(assinatura);
 }
 
+async function deleteAssinatura(id){
+    const db = await connectMongo();
+    return db.collection("assinatura").deleteOne({ _id: new ObjectId(id)});
+} 
+
+async function updateAssinatura(id, status){
+    const db = await connectMongo();
+    return db.collection("assinatura").updateOne({_id: new ObjectId(id)},{$set: { status: status }});
+}
+
 module.exports = {
     insertUsuario,
     insertAluno,
@@ -71,8 +101,11 @@ module.exports = {
     findPlano,
     findAluno,
     findAssinatura,
-    //deleteUsuario,
-    //deleteAluno,
-    //deletePlano,
-    //deleteAssinatura
+    deleteUsuario,
+    deleteAluno,
+    deletePlano,
+    deleteAssinatura,
+    updateUsuario,
+    updatePlano,
+    updateAssinatura
 }
