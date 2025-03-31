@@ -24,6 +24,12 @@ async function insertAluno(aluno){
     aluno.usuarioId = new ObjectId(aluno.usuarioId);
     return db.collection("aluno").insertOne(aluno);
 }
+
+// async function deleteAluno(id){
+//     const db = await connectMongo();
+//     return db.collection("aluno").deleteOne({ _id: new ObjectId(id)});
+// } 
+
 async function findUsuario(){
     const db = await connectMongo();
     return db.collection("usuario").find().toArray();

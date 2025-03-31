@@ -4,6 +4,38 @@
     <h1>
     <%= title %>
   </h1>
+  <ul>
+    <% for(let i = 0; i < resultUsuario.length; i++){ %>
+        <li>
+          Usuario <%= i+1 %>: <%= resultUsuario[i].primeiroNome %>, <%= resultUsuario[i]._id %>
+        </li>
+    <% } %>
+  </ul>
+
+  <ul>
+    <% for(let i = 0; i < resultAluno.length; i++){ %>
+        <li>
+          Aluno <%= i+1 %>: <%= resultAluno[i].matricula %>, <%= resultAluno[i]._id %>
+        </li>
+    <% } %>
+  </ul>
+
+  <ul>
+    <% for(let i = 0; i < resultPlano.length; i++){ %>
+        <li>
+          Plano <%= i+1 %>: <%= resultPlano[i].nome %>, <%= resultPlano[i]._id %>
+        </li>
+    <% } %>
+  </ul>
+
+  <ul>
+    <% for(let i = 0; i < resultAssinatura.length; i++){ %>
+        <li>
+          Assinatura <%= i+1 %>: <%= resultAssinatura[i].status %>, <%= resultAssinatura[i]._id %>
+        </li>
+    <% } %>
+  </ul>
+
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
