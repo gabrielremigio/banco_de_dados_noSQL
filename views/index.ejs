@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
+    <h1>
+    <%= title %>
+  </h1>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <p>Sistema da Academia</p>
     <p>Inserir Usuário:</p>
-    <form action="/save_usuario" method="POST">
+    <form action="/save_usuario" method="POST"> 
     <p>
       <label>primeiroNome:
         <input type="text" name="primeiroNome" />
@@ -57,8 +58,8 @@
   <form action="/save_aluno" method="POST">
     <p>inserir aluno:</p>
     <p>
-      <label>usuarioId:
-        <input type="text" name="id do usuario" />
+      <label>id do usuario:
+        <input type="text" name="usuarioId" />
       </label>
     </p>
     <p>
@@ -67,13 +68,62 @@
       </label>
     </p>
     <p>
-      <label>planoId:
-        <input type="text" name="id do plano" />
+      <label>id do plano:
+        <input type="text" name="planoId" />
       </label>
     </p>
     <p>
-      <label>statusAssinatura:
-        <input type="text" name="status assinatura" />
+      <label>status da assinatura:
+        <input type="text" name="statusAssinatura" />
+      </label>
+    </p>
+    <p>
+      <input type="submit" value="salvar" />
+    </p>
+  </form>
+
+  <form action="/save_plano" method="POST">
+    <p>inserir plano:</p>
+    <p>
+      <label>nome:
+        <input type="text" name="nome" />
+      </label>
+    </p>
+    <p>
+      <label>duracao:
+        <input type="number" name="duracao" />
+      </label>
+    </p>
+    <p>
+      <label>status:
+        <input type="bool" name="status" />
+      </label>
+    </p>
+    <p>
+      <label>valor:
+        <input type="number" step="0.01" name="valor" />
+      </label>
+    </p>
+    <p>
+      <input type="submit" value="salvar" />
+    </p>
+  </form>
+
+  <form action="/save_assinatura" method="POST">
+    <p>inserir assinatura:</p>
+    <p>
+      <label>id do aluno:
+        <input type="text" name="alunoId" />
+      </label>
+    </p>
+    <p>
+      <label>id do plano:
+        <input type="text" name="planoId" />
+      </label>
+    </p>
+    <p>
+      <label>status:
+        <input type="text" name="status" />
       </label>
     </p>
     <p>
